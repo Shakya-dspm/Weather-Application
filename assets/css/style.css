@@ -214,11 +214,15 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 15px 0;
+    margin: 15px 0 15px 15px;
 }
 
 .weather-icon {
-    font-size: 70px;
+    font-size: 80px;
+}
+
+.weather-icon img{
+    width: 100px;
 }
 
 .weather-main h1 {

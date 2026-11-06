@@ -28,14 +28,14 @@
             </header>
 
             <section class="dashboard-grid">
-                <div class="card1 current-weather">
+                <div class="card1 current-weather" id="currentWeather">
                     <h3>Current Weather</h3>
-                    <p class="time">-:-- PM</p>
+                    <p class="time" id="time">-:-- AM</p>
 
                     <div class="weather-main">
-                        <div class="weather-icon">🌧️</div>
+                        <div class="weather-icon" id="weatherIcon">🌧️</div>
                         <div>
-                            <h1>--<sup>°C</sup></h1>
+                            <h1 id="temperature">--<sup>°C</sup></h1>
                             <p>Heavy Rain</p>
                         </div>
                     </div>
@@ -47,22 +47,22 @@
                         <div>
                             <img src="/assets/img/humidity_low_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
                                 alt="Humidity">
-                            <p>--%</p>
+                            <p id="humidity">--%</p>
                         </div>
                         <div>
                             <img src="/assets/img/air_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Air">
-                            <p>-km/h</p>
+                            <p id="wind">-km/h</p>
                         </div>
                         <div>
                             <img src="/assets/img/wb_sunny_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Sunny">
-                            <p>-</p>
+                            <p id="uvIndex">-</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="map-window" id="location-section"></div>
 
-                
+
             </section>
         </div>
     </main>

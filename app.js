@@ -10,7 +10,6 @@ const searchInput = document.getElementById("locationSearch");
 const suggestions = document.getElementById("suggestions");
 
 let searchResults = [];
-let location;
 let activeIndex = -1;
 let debounceTimer;
 let controller;
@@ -148,13 +147,13 @@ function selectLocation(index) {
         `<b>${escapeHTML(locationName)}</b>`
     ).openPopup();
 
-    location = locationName;
-
     console.log({
         name: locationName,
         latitude: latitude,
         longitude: longitude
     });
+
+    searchCityOnAction(locationName);
 
 }
 
@@ -317,3 +316,38 @@ document.addEventListener("click", (event) => {
 
 });
 
+// ==================================
+// 11. CALL API AND GET DATA
+// ==================================
+
+function searchCityOnAction(city) {
+    
+    const apiKey = "bdf15ef4a1514140b35105030261210";
+    const baseUrl = "http://api.weatherapi.com/v1";
+
+    fetch(`${baseUrl}/current.json?key=${apiKey}&q=${city}`).then(res => res.json()).then(data => {
+        console.log(data);
+
+        const localTime = new Date(
+            data.location.localtime.replace(" ", "T")
+        );
+
+        const currentHumidity = document.getElementById("humidity");
+        const currentTemperature = document.getElementById("temperature");
+        const currentWindSpeed = document.getElementById("wind");
+        const currentUVIndex = document.getElementById("uvIndex");
+        const currentWeatherIcon = document.getElementById("weatherIcon");
+
+        time.innerHTML = localTime.toLocaleTimeString("en-US", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true
+        });
+
+        currentHumidity.innerHTML = `${data.current.humidity}%`;
+        currentTemperature.innerHTML = `${data.current.temp_c.toFixed(0)}<sup>°C</sup>`;
+        currentWindSpeed.innerHTML = `${data.current.wind_kph}`;
+        currentUVIndex.innerHTML = `${data.current.uv}`;
+        currentWeatherIcon.innerHTML = `<img src="${data.current.condition.icon}" alt="Weather Icon">`;
+    });
+}
