@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Weather App</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="icon" type="image/svg+xml" href="/assets/img/cloud_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
 </head>
 
@@ -18,10 +19,12 @@
 
         <div class="main-container">
             <header class="top-header">
-                <div class="search-bar">
+                <div class="search-container">
+                    <div class="search-bar">
                     <img src="/assets/img/magnifying-glass-solid-full.svg" alt="Search Icon">
-                    <input type="search" placeholder="Search for location">
+                    <input type="search" id="locationSearch" placeholder="Search for location" autocomplete="off">
                 </div>
+                <ul class="suggestions" id="suggestions"></ul>
             </header>
 
             <section class="dashboard-grid">
@@ -32,7 +35,7 @@
                     <div class="weather-main">
                         <div class="weather-icon">🌧️</div>
                         <div>
-                            <h1>24<sup>°C</sup></h1>
+                            <h1>--<sup>°C</sup></h1>
                             <p>Heavy Rain</p>
                         </div>
                     </div>
@@ -56,9 +59,17 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="map-window" id="location-section"></div>
+
+                
             </section>
         </div>
     </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/app.js"></script>
+
 </body>
 
 </html>
