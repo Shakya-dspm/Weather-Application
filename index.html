@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Weather App</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="icon" type="image/svg+xml" href="/assets/img/cloud_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
@@ -16,8 +16,47 @@
             <h1 class="nav-header">Weather Application</h1>
         </div>
 
-        <div class="card-grid">
+        <div class="main-container">
+            <header class="top-header">
+                <div class="search-bar">
+                    <img src="/assets/img/magnifying-glass-solid-full.svg" alt="Search Icon">
+                    <input type="search" placeholder="Search for location">
+                </div>
+            </header>
 
+            <section class="dashboard-grid">
+                <div class="card1 current-weather">
+                    <h3>Current Weather</h3>
+                    <p class="time">-:-- PM</p>
+
+                    <div class="weather-main">
+                        <div class="weather-icon">🌧️</div>
+                        <div>
+                            <h1>24<sup>°C</sup></h1>
+                            <p>Heavy Rain</p>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div>
+                            <img src="/assets/img/water_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Water Level">
+                            <p>---</p>
+                        </div>
+                        <div>
+                            <img src="/assets/img/humidity_low_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                                alt="Humidity">
+                            <p>--%</p>
+                        </div>
+                        <div>
+                            <img src="/assets/img/air_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Air">
+                            <p>-km/h</p>
+                        </div>
+                        <div>
+                            <img src="/assets/img/wb_sunny_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Sunny">
+                            <p>-</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 </body>
