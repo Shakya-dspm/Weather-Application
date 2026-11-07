@@ -5,6 +5,9 @@
     font-family: "Inter", sans-serif;
 }
 
+/* ==================================
+   BASE BODY (Default / Day Theme)
+   ================================== */
 body {
     margin: 0;
     min-height: 100vh;
@@ -14,12 +17,13 @@ body {
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
-    /* Allows scrolling on mobile */
 
-    background-image: url(/assets/img/chuttersnap-TSgwbumanuE-unsplash.jpg);
+    /* Daytime Background Image */
+    background-image: url('/assets/img/chuttersnap-TSgwbumanuE-unsplash.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transition: background-image 0.5s ease-in-out;
 }
 
 body::before {
@@ -29,14 +33,107 @@ body::before {
     left: -20px;
     right: -20px;
     bottom: -20px;
-
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    filter: brightness(0.7) contrast(0.8);
-    background-color: rgba(0, 0, 0, 0.2);
     z-index: -1;
+    transition: background-color 0.5s ease, filter 0.5s ease;
 }
 
+/* ==================================
+   LIGHT THEME (Daytime Styling)
+   ================================== */
+body.light-theme {
+    color: #1e293b;
+}
+
+body.light-theme::before {
+    background-color: rgba(255, 255, 255, 0.3);
+    filter: brightness(0.8) contrast(0.9);
+}
+
+body.light-theme .nav-section,
+body.light-theme .card1,
+body.light-theme .card2,
+body.light-theme .map-window {
+    background-color: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #0f172a;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .nav-header,
+body.light-theme .card-title,
+body.light-theme .weather-status,
+body.light-theme .city-name,
+body.light-theme .history-section h3,
+body.light-theme .card1 h3 {
+    color: #0f172a;
+}
+
+body.light-theme .time {
+    color: #334155;
+}
+
+body.light-theme .history-section {
+    background: rgba(255, 255, 255, 0.4);
+    color: #0f172a;
+}
+
+body.light-theme .history-card {
+    background: rgba(255, 255, 255, 0.6);
+    color: #0f172a;
+}
+
+
+/* ==================================
+   DARK THEME (Nighttime Styling & Background)
+   ================================== */
+body.dark-theme {
+    /* Nighttime Background Image (Replace with your night image filename if different) */
+    background-image: url('/assets/img/chuttersnap-TSgwbumanuE-unsplash.jpg');
+    color: #ffffff;
+}
+
+body.dark-theme::before {
+    background-color: rgba(0, 0, 0, 0.55);
+    filter: brightness(0.6) contrast(0.85);
+}
+
+body.dark-theme .nav-section,
+body.dark-theme .card1,
+body.dark-theme .card2,
+body.dark-theme .map-window {
+    background-color: rgba(15, 20, 66, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.342);
+}
+
+body.dark-theme .nav-header,
+body.dark-theme .card-title,
+body.dark-theme .weather-status,
+body.dark-theme .city-name,
+body.dark-theme .history-section h3,
+body.dark-theme .card1 h3 {
+    color: #ffffff;
+}
+
+body.dark-theme .time {
+    color: #c6dcf3;
+}
+
+body.dark-theme .history-section {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+body.dark-theme .history-card {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+
+/* Rest of your existing structural styles below */
 main {
     width: 100%;
     max-width: 1280px;
@@ -55,9 +152,7 @@ main {
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    background: rgba(15, 20, 66, 0.2);
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.435);
     padding: 10px;
 }
 
@@ -68,7 +163,6 @@ main {
 }
 
 .nav-header {
-    color: white;
     font-size: 24px;
     text-align: center;
     margin: 0;
@@ -106,6 +200,7 @@ main {
     border-radius: 8px;
     background: rgba(10, 40, 80, 0.35);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.342);
     padding: 0 12px;
 }
@@ -175,14 +270,10 @@ main {
 .card1,
 .card2,
 .map-window {
-    background-color: rgba(15, 20, 66, 0.2);
     border-radius: 22px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     padding: 20px;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.342);
-    color: white;
 }
 
 .map-window {
@@ -194,20 +285,18 @@ main {
 
 .card1 h3 {
     font-size: 18px;
-    margin-top: 0;
 }
 
 .time {
     margin-top: 8px;
     font-size: 13px;
-    color: #c6dcf3;
 }
 
 .weather-main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 15px 0;
+    margin: 40px 10px;
 }
 
 .weather-icon {
@@ -216,6 +305,11 @@ main {
 
 .weather-icon img {
     width: 80px;
+}
+
+.current-temp {
+    display: block;
+    text-align: right;
 }
 
 .weather-main h1 {
@@ -236,7 +330,7 @@ main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    margin-top: 25px;
+    margin-top: 35px;
     text-align: center;
 }
 
@@ -258,7 +352,7 @@ main {
 
 .card-title {
     font-size: 18px;
-    margin: 0;
+    margin: 18px;
 }
 
 .city-list {
@@ -267,7 +361,7 @@ main {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
 .city-item {
@@ -292,17 +386,14 @@ main {
 }
 
 .weather-status {
-    color: white;
     font-size: 0.95rem;
 }
 
 .history-section {
     margin-top: 25px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    color: #ffffff;
 }
 
 .history-section h3 {
@@ -318,7 +409,6 @@ main {
 }
 
 .history-card {
-    background: rgba(255, 255, 255, 0.08);
     padding: 15px;
     border-radius: 12px;
     text-align: center;
@@ -327,7 +417,6 @@ main {
 
 .history-card:hover {
     transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.15);
 }
 
 .history-date {
@@ -355,10 +444,7 @@ main {
     margin: 0;
 }
 
-/* ==================================
-   RESPONSIVE MEDIA QUERIES FOR MOBILE/TABLET
-   ================================== */
-
+/* Media Queries */
 @media (max-width: 1024px) {
     .dashboard-grid {
         grid-template-columns: 1fr 1fr;
@@ -367,7 +453,6 @@ main {
     .map-window {
         grid-column: span 2;
         order: -1;
-        /* Puts the map nicely near the top on tablets */
         min-height: 320px;
     }
 }

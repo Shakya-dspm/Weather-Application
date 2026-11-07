@@ -391,6 +391,15 @@ function searchCityOnAction(query) {
     fetch(`${baseUrl}/current.json?key=${apiKey}&q=${query}&aqi=yes`).then(res => res.json()).then(data => {
         console.log(data);
 
+        const isDay = data.current.is_day === 1;
+        if (isDay) {
+            document.body.classList.remove("dark-theme");
+            document.body.classList.add("light-theme");
+        } else {
+            document.body.classList.remove("light-theme");
+            document.body.classList.add("dark-theme");
+        }
+
         if (marker) {
             const locationName = `${data.location.name}, ${data.location.country}`;
             marker.bindPopup(`<b>${escapeHTML(locationName)}</b>`).openPopup();
@@ -407,6 +416,7 @@ function searchCityOnAction(query) {
         const currentUVIndex = document.getElementById("uvIndex");
         const currentWeatherIcon = document.getElementById("weatherIcon");
         const currentAirQuality = document.getElementById("airQuality");
+        const currentWeatherStatus = document.getElementById("weatherStatus");
 
         if (timeEl) {
             timeEl.innerHTML = localTime.toLocaleTimeString("en-US", {
@@ -417,6 +427,7 @@ function searchCityOnAction(query) {
         }
 
         currentHumidity.innerHTML = `${data.current.humidity}%`;
+        currentWeatherStatus.innerHTML = `${data.current.condition.text}`;
         currentTemperature.innerHTML = `${data.current.temp_c.toFixed(0)}<sup>°C</sup>`;
         currentWindSpeed.innerHTML = `${data.current.wind_kph}`;
         currentUVIndex.innerHTML = `${data.current.uv}`;
