@@ -455,6 +455,12 @@ function loadPopularCities() {
         fetch(`${baseUrl}?key=${apiKey}&q=${city}`)
             .then(res => res.json())
             .then(data => {
+                // Check if WeatherAPI returned an error (e.g., invalid key or city)
+                if (data.error) {
+                    console.error(`API Error for ${city}:`, data.error.message);
+                    return;
+                }
+
                 const item = cityItems[index];
                 if (!item) return;
 
@@ -462,11 +468,13 @@ function loadPopularCities() {
                 const statusEl = item.querySelector(".weather-status");
                 const iconEl = item.querySelector(".pop-icon");
 
-                // Update text and weather details
-                nameEl.textContent = data.location.name;
-                statusEl.textContent = data.current.condition.text;
-                iconEl.src = data.current.condition.icon;
-                iconEl.alt = data.current.condition.text;
+                // Safely update text and weather details if elements exist
+                if (nameEl) nameEl.textContent = data.location.name;
+                if (statusEl) statusEl.textContent = data.current.condition.text;
+                if (iconEl) {
+                    iconEl.src = data.current.condition.icon;
+                    iconEl.alt = data.current.condition.text;
+                }
             })
             .catch(err => console.error(`Failed to fetch weather for ${city}:`, err));
     });
