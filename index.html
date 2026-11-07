@@ -1,11 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="icon" type="image/svg+xml" href="/assets/img/cloud_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
 </head>
+
 <body>
-    
+    <main>
+        <div class="nav-section">
+            <img src="/assets/img/cloud_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Weather Logo" class="nav-icon">
+            <h1 class="nav-header">Weather Application</h1>
+        </div>
+
+        <div class="main-container">
+            <header class="top-header">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <img src="/assets/img/magnifying-glass-solid-full.svg" alt="Search Icon">
+                        <input type="search" id="locationSearch" placeholder="Search for location" autocomplete="off">
+                    </div>
+                </div>
+                <ul class="suggestions" id="suggestions"></ul>
+            </header>
+
+            <section class="dashboard-grid">
+                <div class="card1 current-weather" id="currentWeather">
+                    <h3>Current Weather</h3>
+                    <p class="time" id="time">-:-- AM</p>
+
+                    <div class="weather-main">
+                        <div class="weather-icon" id="weatherIcon">🌧️</div>
+                        <div class="current-temp">
+                            <h1 id="temperature">--<sup>°C</sup></h1>
+                            <p id="weatherStatus">Heavy Rain</p>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div>
+                            <img src="/assets/img/water_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Water Level">
+                            <p id="airQuality">---</p>
+                        </div>
+                        <div>
+                            <img src="/assets/img/humidity_low_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                                alt="Humidity">
+                            <p id="humidity">--%</p>
+                        </div>
+                        <div>
+                            <img src="/assets/img/air_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Air">
+                            <p id="wind">-km/h</p>
+                        </div>
+                        <div>
+                            <img src="/assets/img/wb_sunny_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Sunny">
+                            <p id="uvIndex">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-window" id="location-section"></div>
+
+                <div class="card2 popular-city" id="popular-city">
+                    <div class="card-header">
+                        <h3 class="card-title">Popular Cities</h3>
+                    </div>
+
+                    <ul class="city-list" id="popularCityList">
+                        <!-- Colombo -->
+                        <li class="city-item">
+                            <div class="city-info">
+                                <span class="icon">☁️</span>
+                                <span class="city-name">Colombo</span>
+                            </div>
+                            <span class="weather-status">Partly Cloudy</span>
+                        </li>
+
+                        <!-- Galle -->
+                        <li class="city-item">
+                            <div class="city-info">
+                                <span class="icon">☁️</span>
+                                <span class="city-name">Galle</span>
+                            </div>
+                            <span class="weather-status">Drizzle Rain</span>
+                        </li>
+
+                        <!-- Kandy -->
+                        <li class="city-item">
+                            <div class="city-info">
+                                <span class="icon">☁️</span>
+                                <span class="city-name">Kandy</span>
+                            </div>
+                            <span class="weather-status">Heavy Rain</span>
+                        </li>
+
+                        <!-- Jaffna -->
+                        <li class="city-item">
+                            <div class="city-info">
+                                <span class="icon">☁️</span>
+                                <span class="city-name">Jaffna</span>
+                            </div>
+                            <span class="weather-status">Mostly Sunny</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="history-section">
+                <h3>Past 7 Days History</h3>
+                <div class="history-grid" id="historyGrid">
+                    <!-- History cards dynamically populated here -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/app.js"></script>
+
 </body>
+
 </html>
