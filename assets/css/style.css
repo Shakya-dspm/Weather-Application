@@ -132,8 +132,28 @@ body.dark-theme .history-card {
     color: #ffffff;
 }
 
+/* ==================================
+   LIGHT MODE ICON INVERSION & STYLING
+   ================================== */
 
-/* Rest of your existing structural styles below */
+/* Inverts light SVGs to dark grey/black in Light Mode */
+body.light-theme .search-bar img,
+body.light-theme .nav-icon,
+body.light-theme .weather-details img {
+    filter: invert(0.8) brightness(0.2);
+}
+
+/* Fix search bar cancel button icon for Light Mode */
+body.light-theme .search-bar input[type="search"]::-webkit-search-cancel-button {
+    filter: invert(0.8) brightness(0.2);
+}
+
+.nav-icon,
+.search-bar img,
+.weather-details img {
+    transition: filter 0.5s ease;
+}
+
 main {
     width: 100%;
     max-width: 1280px;
