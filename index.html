@@ -21,8 +21,9 @@
             <header class="top-header">
                 <div class="search-container">
                     <div class="search-bar">
-                    <img src="/assets/img/magnifying-glass-solid-full.svg" alt="Search Icon">
-                    <input type="search" id="locationSearch" placeholder="Search for location" autocomplete="off">
+                        <img src="/assets/img/magnifying-glass-solid-full.svg" alt="Search Icon">
+                        <input type="search" id="locationSearch" placeholder="Search for location" autocomplete="off">
+                    </div>
                 </div>
                 <ul class="suggestions" id="suggestions"></ul>
             </header>
@@ -42,7 +43,7 @@
                     <div class="weather-details">
                         <div>
                             <img src="/assets/img/water_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Water Level">
-                            <p>---</p>
+                            <p id="airQuality">---</p>
                         </div>
                         <div>
                             <img src="/assets/img/humidity_low_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
@@ -62,8 +63,58 @@
 
                 <div class="map-window" id="location-section"></div>
 
+                <div class="card2 popular-city" id="popular-city">
+                    <div class="card-header">
+                        <h3 class="card-title">Popular Cities</h3>
+                    </div>
 
+                    <ul class="city-list" id="popularCityList">
+                        <!-- Colombo -->
+                        <li class="city-item">
+                            <div class="city-info">
+                                <span class="icon">☁️</span>
+                                <span class="city-name">Colombo</span>
+                            </div>
+                            <span class="weather-status">Partly Cloudy</span>
+                        </li>
+
+                        <!-- Galle -->
+                        <li class="city-item">
+                            <div class="city-info">
+                                <span class="icon">☁️</span>
+                                <span class="city-name">Galle</span>
+                            </div>
+                            <span class="weather-status">Drizzle Rain</span>
+                        </li>
+
+                        <!-- Kandy -->
+                        <li class="city-item">
+                            <div class="city-info">
+                                <span class="icon">☁️</span>
+                                <span class="city-name">Kandy</span>
+                            </div>
+                            <span class="weather-status">Heavy Rain</span>
+                        </li>
+
+                        <!-- Jaffna -->
+                        <li class="city-item">
+                            <div class="city-info">
+                                <span class="icon">☁️</span>
+                                <span class="city-name">Jaffna</span>
+                            </div>
+                            <span class="weather-status">Mostly Sunny</span>
+                        </li>
+                    </ul>
+                </div>
             </section>
+
+            <section class="history-section">
+                <h3>Past 7 Days History</h3>
+                <div class="history-grid" id="historyGrid">
+                    <!-- History cards dynamically populated here -->
+                </div>
+            </section>
+
         </div>
     </main>
 
